@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assistant Bot</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        #chatbox { width: 90%; max-width: 500px; margin: auto; border: 1px solid #ccc; padding: 10px; }
+        .user { color: blue; text-align: right; }
+        .bot { color: white; text-align: left; }
+
+        body{
+            background-color: black;
+        }
+        #chatbox{
+            overflow-y: hidden;
+        }
+    </style>
+</head>
+<body>
+    <h2>DSA Assistant Bot</h2>
+    <div id="chatbox"></div>
+    <input type="text" id="userInput" placeholder="Ask a DSA question..." />
+    <button onclick="askBot()">Send</button>
+
+    <script>
+        async function askBot() {
+            const userMessage = document.getElementById("userInput").value;
+            if (!userMessage) return;
+
+            document.getElementById("chatbox").innerHTML += `<p class="user">You: ${userMessage}</p>`;
+
+            const response = await fetch("https://first-ai-integration.vercel.app/", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ question: userMessage })
+            });
+
+            const data = await response.json();
+            document.getElementById("chatbox").innerHTML += `<p class="bot">Bot: ${data.reply}</p> <br>`;
+        }
+    </script>
+</body>
+</html>
