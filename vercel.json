@@ -3,4 +3,14 @@
   "routes": [
     { "src": "/api/chat", "dest": "/api/index.js" }
   ]
+
+  
+"_comment": "version": 2 → Specifies that you're using Vercel's latest routing system.
+"_comment": "routes" → Defines custom API routing behavior.
+"_comment": "src": "/api/chat" → When a request is made to /api/chat on your Vercel app, it should trigger the backend.
+"_comment": "dest": "/api/index.js" → This tells Vercel to forward the request to index.js inside the /api folder, where your backend logic is written.
+
+
+
+  
 }
