@@ -31,7 +31,7 @@
 
             document.getElementById("chatbox").innerHTML += `<p class="user">You: ${userMessage}</p>`;
 
-            const response = await fetch("https://first-ai-integration.vercel.app/", {
+            const response = await fetch("https://first-ai-integration.vercel.app/api/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ question: userMessage })
