@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 dotenv.config();
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -15,8 +16,8 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 app.use(cors());
 app.use(express.json());
 
-// API Route for Chatbot
-app.post("/ask", async (req, res) => {
+// API Route for Chatbot (Updated route to /api/chat)
+app.post("/api/chat", async (req, res) => {
     try {
         const userQuery = req.body.question;
         if (!userQuery) return res.status(400).json({ error: "Question is required" });
