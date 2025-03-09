@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DSA Assistant Bot</title>
-    <style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <!-- <style>
         body { font-family: Arial, sans-serif; text-align: center; }
-        #chatbox { width: 90%; max-width: 500px; margin: auto; border: 1px solid #ccc; padding: 10px; }
+        /* #chatbox { width: 90%; max-width: 500px; margin: auto; border: 1px solid #ccc; padding: 10px; } */
         .user { color: blue; text-align: right; }
         .bot { color: white; text-align: left; }
 
@@ -16,13 +18,18 @@
         #chatbox{
             overflow-y: hidden;
         }
-    </style>
+    </style> -->
 </head>
 <body>
-    <h2>DSA Assistant Bot</h2>
+    <div class="logo"><i class="fa-solid fa-robot mode"></i></div>
+    <div class="txt">
+    <h1>DSA Assistant Bot</h1>
+</div>
     <div id="chatbox"></div>
-    <input type="text" id="userInput" placeholder="Ask a DSA question..." />
+    <div class="ask"> 
+    <input type="text" id="userInput" class="in" placeholder="Ask a DSA question..." />
     <button onclick="askBot()">Send</button>
+    </div>
 
     <script>
         async function askBot() {
@@ -39,6 +46,16 @@
 
             const data = await response.json();
             document.getElementById("chatbox").innerHTML += `<p class="bot">Bot: ${data.reply}</p> <br>`;
+            
+            let mode=document.querySelector(".mode");
+            iswhite=false;
+
+            mode.addEventListener("click",()=>{
+                if(iswhite==false){
+                    document.querySelector(".in").style.backgroundColor="white";
+                }
+            })
+
         }
     </script>
 </body>
