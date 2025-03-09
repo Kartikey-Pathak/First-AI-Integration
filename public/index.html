@@ -47,14 +47,7 @@
             const data = await response.json();
             document.getElementById("chatbox").innerHTML += `<p class="bot">Bot: ${data.reply}</p> <br>`;
             
-            let mode=document.querySelector(".mode");
-            iswhite=false;
-
-            mode.addEventListener("click",()=>{
-                if(iswhite==false){
-                    document.querySelector(".in").style.backgroundColor="white";
-                }
-            })
+     
 
         }
     </script>
